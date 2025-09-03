@@ -37,9 +37,9 @@ class AgentState(TypedDict):
 load_dotenv(override=True)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 default_tool_files = {
-    'opentarget': os.path.join(current_dir, 'txagent', 'data', 'opentarget_tools.json'),
-    'fda_drug_label': os.path.join(current_dir, 'txagent', 'data', 'fda_drug_labeling_tools.json'),
-    'monarch': os.path.join(current_dir, 'txagent', 'data', 'monarch_tools.json')
+    # 'opentarget': os.path.join(current_dir, 'txagent', 'data', 'opentarget_tools.json'),
+    'fda_drug_label': os.path.join(current_dir, 'txagent', 'data', 'compressed_tools.json'),
+    # 'monarch': os.path.join(current_dir, 'txagent', 'data', 'monarch_tools.json')
 }
 tool_universe = ToolUniverse(tool_files=default_tool_files, keep_default_tools=False)
 tool_universe.load_tools()
@@ -62,6 +62,73 @@ def Tool_RAG(query: str, rag_num: int = 5) -> str:
     if not picked_tools:
         return "No relevant tools were found for the query."
     return json.dumps(picked_tools) # , indent=2)
+
+import requests
+@tool
+def FDA_get_all_info_by_drug_name(drug_name):
+    """
+    Retrieves all information about a given drug name from the FDA.
+    drug_name: str
+    Returns:
+        dict: A dictionary containing all information about the drug.
+    """
+    params = [
+    {
+        "base_url": "https://api.fda.gov/drug/label.json",
+        "limit": 1,
+        "search": f'(openfda.brand_name:("{drug_name}"))'
+    },
+    {
+        "base_url": "https://api.fda.gov/drug/label.json",
+        "limit": 1,
+        "search": f'(openfda.generic_name:("{drug_name}"))'
+    },
+    {
+        "base_url": "https://api.fda.gov/drug/ndc.json",
+        "limit": 1,
+        "search": f'(generic_name:("{drug_name}"))'
+    },
+    {
+        "base_url": "https://api.fda.gov/drug/ndc.json",
+        "limit": 1,
+        "search": f'(brand_name:("{drug_name}"))'
+    },
+    {
+        "base_url": "https://api.fda.gov/drug/label.json",
+        "limit": 1,
+        "search": f'"{drug_name}"'
+    },
+    {
+        "base_url": "https://api.fda.gov/drug/ndc.json",
+        "limit": 1,
+        "search": f'"{drug_name}"'
+    },
+    ]
+    
+    for param in params:
+        base_url = param['base_url']
+        param.pop('base_url')
+        try:
+            # 发送GET请求
+            # response = requests.get(base_url, params=param, timeout=10)
+            from urllib.parse import urlencode, quote
+            query = urlencode(param, quote_via=quote)
+            url = f"{base_url}?{query}"
+            # print(url)
+            response = requests.get(url, timeout=10)
+            # 检查请求是否成功
+            response.raise_for_status()
+            
+            # 返回JSON格式的响应内容
+            result = response.json()
+            print("获取成功")
+            # result['entity'] = drug_name  # 添加药品名称到结果中
+            return result
+            
+        except requests.exceptions.RequestException as e:
+            # print(f"获取 {drug_name} 信息时发生错误: {e}")
+            pass
+    return None
 
 ### --- MODIFICATION: Enhanced error detection in tool output capture --- ###
 def capture_tool_output(func, *args, **kwargs) -> str:
@@ -120,7 +187,7 @@ def capture_tool_output(func, *args, **kwargs) -> str:
         return f"{REFLECTION_TRIGGER}: An exception occurred during tool execution: {e}"
 
 def load_all_tools_map() -> Dict[str, Callable]:
-    all_tools_map = {"Tool_RAG": Tool_RAG}
+    all_tools_map = {"Tool_RAG": Tool_RAG, "FDA_get_all_info_by_drug_name": FDA_get_all_info_by_drug_name}
     type_map = {"string": str, "integer": int, "number": float, "boolean": bool}
 
     def create_wrapped_tool(schema: dict, args_schema: Type[BaseModel]) -> Callable:
@@ -136,7 +203,7 @@ def load_all_tools_map() -> Dict[str, Callable]:
         return tool(_tool_func, args_schema=args_schema)
 
     for tool_schema in tool_universe.all_tools:
-        if tool_schema['name'] == 'Tool_RAG':
+        if tool_schema['name'] == 'Tool_RAG' or tool_schema['name'] == 'FDA_get_all_info_by_drug_name':
             continue
 
         params = tool_schema.get('parameter', {})
@@ -215,7 +282,7 @@ def build_graph(model_name: str) -> CompiledStateGraph:
 
     def call_agent(state: AgentState) -> dict:
         print("\n🤔 Agent thinking...")
-        current_tools = state.get("available_tools", [Tool_RAG])
+        current_tools = state.get("available_tools", [Tool_RAG, FDA_get_all_info_by_drug_name])
         model_with_current_tools = model.bind_tools(current_tools)
         response = model_with_current_tools.invoke(state["messages"])
         return {"messages": [response]}
@@ -356,7 +423,7 @@ Here are some suggestions to fix this:
 if __name__ == "__main__":
     model_name = os.getenv("MODEL_NAME")
     app = build_graph(model_name)
-    initial_tools = [Tool_RAG]
+    initial_tools = [Tool_RAG, FDA_get_all_info_by_drug_name]
     example_data ={"id":"ZFU0wbRPwuMG","question_type":"open_ended_multi_choice","question":"What precaution should be taken for patients with a history of allergic disorders before administering Gadavist?","correct_answer":"C","options":{"A":"Administer Gadavist in a diluted form","B":"Avoid Gadavist administration entirely","C":"Assess the patient\u2019s history of reactions to contrast media and ensure trained personnel are available for resuscitation","D":"Perform hemodialysis immediately after administration"}}
     query = json.dumps({"question":example_data["question"],"options":example_data["options"]}, indent=2)
     config = {"configurable": {"thread_id": "test-thread"},

@@ -1,0 +1,3387 @@
+[
+    {
+        "name": "FDA_get_drug_names_by_abuse_info",
+        "description": "Retrieve drug names based on information about types of abuse and adverse reactions pertinent to those types of abuse. Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "abuse_info": {
+                    "type": "string",
+                    "description": "Information about the types of abuse that can occur with the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "abuse_info": [
+                    "abuse"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "Abuse",
+            "AdverseReactions",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_accessories",
+        "description": "Retrieve drug names based on the accessories field information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "accessory_name": {
+                    "type": "string",
+                    "description": "The name or part of the name of the accessory.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "accessory_name": [
+                    "accessories"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "Accessories",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_active_ingredient",
+        "description": "Retrieve drug names based on the active ingredient information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "active_ingredient": {
+                    "type": "string",
+                    "description": "The active ingredient in the drug product.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "active_ingredient": [
+                    "active_ingredient"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "active_ingredient",
+            "FDA",
+            "Description"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_application_number_NDC_number",
+        "description": "Retrieve drug names based on the specified FDA application number or National Drug Code (NDC) number.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "application_manufacturer_or_NDC_info": {
+                    "type": "string",
+                    "description": "FDA application, manufacturer, or NDC number info",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "application_manufacturer_or_NDC_info": [
+                    "openfda.application_number",
+                    "openfda.manufacturer_name",
+                    "openfda.product_ndc"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "active_ingredient",
+            "FDA",
+            "Description",
+            "DosageAndAdministration",
+            "HowSupplied",
+            "FDAApprovedLabeling"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_adverse_reaction",
+        "description": "Retrieve the drug name based on specific adverse reactions reported. Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "adverse_reaction": {
+                    "type": "string",
+                    "description": "The adverse reaction to search for.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "adverse_reaction": [
+                    "adverse_reactions"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "AdverseReactions",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_alarm",
+        "description": "Retrieve drug names based on the presence of specific alarms, which are related to adverse reaction events. Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "alarm_type": {
+                    "type": "string",
+                    "description": "The type of alarm to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "alarm_type": [
+                    "alarms"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "alarms",
+            "FDA",
+            "DrugInteractions",
+            "AdverseReactions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_animal_pharmacology_info",
+        "description": "Retrieve drug names based on animal pharmacology and toxicology information.  Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pharmacology_info": {
+                    "type": "string",
+                    "description": "Information from studies of the drug in animals.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pharmacology_info": [
+                    "animal_pharmacology_and_or_toxicology"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "AnimalPharmacology",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_info_on_conditions_for_doctor_consultation",
+        "description": "Retrieve the drug names that require asking a doctor before use due to a patient's specific conditions and symptoms.  Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "condition": {
+                    "type": "string",
+                    "description": "The condition or symptom that requires consulting a doctor.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "condition": [
+                    "ask_doctor"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "AskDoctor",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_consulting_doctor_pharmacist_info",
+        "description": "Retrieve drug names based on information about when a doctor or pharmacist should be consulted regarding drug interactions. Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "interaction_info": {
+                    "type": "string",
+                    "description": "Information about when a doctor or pharmacist should be consulted regarding drug interactions.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "interaction_info": [
+                    "ask_doctor_or_pharmacist"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "ask_doctor_or_pharmacist",
+            "FDA",
+            "AskDoctor",
+            "DrugInteractions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_assembly_installation_info",
+        "description": "Retrieve drug names based on assembly or installation instructions. Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "field_info": {
+                    "type": "string",
+                    "description": "Information related to assembly or installation instructions.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "field_info": [
+                    "assembly_or_installation_instructions"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "assembly_or_installation_instructions",
+            "FDA",
+            "InstructionsForUse"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_boxed_warning",
+        "description": "Retrieve drug names that have specific boxed warnings and adverse effects.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "warning_text": {
+                    "type": "string",
+                    "description": "The text of the boxed warning to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "warning_text": [
+                    "boxed_warning"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "boxed_warning",
+            "FDA",
+            "DrugInteractions",
+            "Warnings"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_calibration_instructions",
+        "description": "Retrieve the drug name based on the calibration instructions provided.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "calibration_instructions": {
+                    "type": "string",
+                    "description": "Instructions used for calibration of the drug.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "calibration_instructions": [
+                    "calibration_instructions"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "calibration_instructions",
+            "FDA",
+            "Description"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_SPL_ID",
+        "description": "Retrieve the drug name based on the FDA application number, NUI unique identifier, document ID of a specific version of the drug's Structured Product Label (SPL), or set ID of the drug's Structured Product Label that works across label versions.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "field_info": {
+                    "type": "string",
+                    "description": "The specific field information to search for.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "field_info": [
+                    "openfda.application_number",
+                    "openfda.nui",
+                    "openfda.spl_id",
+                    "openfda.spl_set_id"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "DrugName",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_clinical_pharmacology",
+        "description": "Retrieve drug names based on clinical pharmacology information. Warning: This tool only outputs a predefined limited number of drug names and does not cover all possible drugs. Use with caution.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "clinical_pharmacology": {
+                    "type": "string",
+                    "description": "Information about the clinical pharmacology and actions of the drug in humans. Use key words",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "clinical_pharmacology": [
+                    "clinical_pharmacology"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "ClinicalPharmacology",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_clinical_studies",
+        "description": "Retrieve drug names based on the presence of clinical studies information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "clinical_studies": {
+                    "type": "string",
+                    "description": "Information related to clinical studies. Use keywords split by blank space.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "clinical_studies": [
+                    "clinical_studies"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "ClinicalStudies",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_contraindications",
+        "description": "Retrieve drug names based on specific contraindications information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "contraindication_info": {
+                    "type": "string",
+                    "description": "Information about situations in which the drug product is contraindicated.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "contraindication_info": [
+                    "contraindications"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "contraindications",
+            "FDA",
+            "Contraindications"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_controlled_substance_DEA_schedule",
+        "description": "Retrieve drug names based on the Drug Enforcement Administration (DEA) schedule information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "controlled_substance_schedule": {
+                    "type": "string",
+                    "description": "The schedule in which the drug is controlled by the Drug Enforcement Administration.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "controlled_substance_schedule": [
+                    "controlled_substance"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "controlled_substance",
+            "FDA",
+            "ControlledSubstance"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_dependence_info",
+        "description": "Retrieve the drug name based on information about dependence characteristics.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "dependence_info": {
+                    "type": "string",
+                    "description": "Information related to psychological and physical dependence of the drug.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "dependence_info": [
+                    "dependence"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "dependence",
+            "FDA",
+            "DrugAbuseAndDependence"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_disposal_info",
+        "description": "Retrieve drug names based on disposal and waste handling information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "disposal_info": {
+                    "type": "string",
+                    "description": "Information related to the disposal and waste handling of the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "disposal_info": [
+                    "disposal_and_waste_handling"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "disposal_and_waste_handling",
+            "FDA",
+            "Disposal"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_dosage_info",
+        "description": "Retrieve the drug name based on dosage and administration information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "dosage_info": {
+                    "type": "string",
+                    "description": "Information about the drug product\u2019s dosage and administration recommendations.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "dosage_info": [
+                    "dosage_and_administration"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "DosageAndAdministration",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_dosage_forms_and_strengths_info",
+        "description": "Retrieve drug names based on specific dosage forms and strengths information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "dosage_forms_and_strengths": {
+                    "type": "string",
+                    "description": "Information about the dosage forms and strengths of the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "dosage_forms_and_strengths": [
+                    "dosage_forms_and_strengths"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "DosageFormsAndStrengths",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_abuse_dependence_info",
+        "description": "Retrieve the drug name based on information about drug abuse and dependence, including whether the drug is a controlled substances, the types of possible abuse, and adverse reactions relevant to those abuse types.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "abuse_info": {
+                    "type": "string",
+                    "description": "Information about drug abuse and dependence.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "abuse_info": [
+                    "drug_abuse_and_dependence"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "DrugAbuseAndDependence",
+            "drug_abuse_and_dependence",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_lab_test_interference",
+        "description": "Retrieve drug names that have known interference with laboratory tests.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "lab_test_interference": {
+                    "type": "string",
+                    "description": "Information about any known interference by the drug with laboratory tests.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "lab_test_interference": [
+                    "drug_and_or_laboratory_test_interactions"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "drug_and_or_laboratory_test_interactions",
+            "FDA",
+            "LaboratoryTests"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_drug_interactions",
+        "description": "Retrieve a list of drug names that have the specified drug interactions.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "interaction_term": {
+                    "type": "string",
+                    "description": "The term to search for in drug interactions.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "interaction_term": [
+                    "drug_interactions"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "drug_interactions",
+            "FDA",
+            "DrugInteractions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_effective_time",
+        "description": "Retrieve drug names based on the effective time of the labeling document.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "effective_time": {
+                    "type": "string",
+                    "description": "Date reference to the particular version of the labeling document in YYYYmmdd format.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "effective_time": [
+                    "effective_time"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "effective_time",
+            "FDA",
+            "DrugNames"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_environmental_warning",
+        "description": "Retrieve the drug name based on the specified environmental warnings.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "environmental_warning": {
+                    "type": "string",
+                    "description": "The environmental warning text to search for.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "environmental_warning": [
+                    "environmental_warning"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "EnvironmentalWarning",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_food_safety_warnings",
+        "description": "Retrieve drug names based on specific food safety warnings.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "field_info": {
+                    "type": "string",
+                    "description": "Information related to food safety warnings.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "field_info": [
+                    "food_safety_warning"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "FoodSafetyWarning",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_general_precautions",
+        "description": "Retrieve drug names based on specific general precautions information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "precaution_info": {
+                    "type": "string",
+                    "description": "Information about any special care to be exercised for safe and effective use of the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "precaution_info": [
+                    "general_precautions"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "general_precautions",
+            "FDA",
+            "Precautions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_geriatric_use",
+        "description": "Retrieve drug names that have specific information about geriatric use.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "geriatric_use": {
+                    "type": "string",
+                    "description": "Information about any limitations on any geriatric indications, needs for specific monitoring, hazards associated with use of the drug in the geriatric population.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "geriatric_use": [
+                    "geriatric_use"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "geriatric_use",
+            "FDA",
+            "GeriatricUse"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_dear_health_care_provider_letter_info",
+        "description": "Fetch drug names based on information about dear health care provider letters. The letters are sent by drug manufacturers to provide new or updated information about the drug.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "letter_info": {
+                    "type": "string",
+                    "description": "Information about the specific dear health care provider letters.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "letter_info": [
+                    "health_care_provider_letter"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "health_care_provider_letter",
+            "FDA",
+            "InformationForPatients"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_health_claim",
+        "description": "Retrieve drug names based on specific health claims.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "health_claim": {
+                    "type": "string",
+                    "description": "The health claim associated with the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "health_claim": [
+                    "health_claim"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "HealthClaim",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_document_id",
+        "description": "Retrieve the drug name based on the document ID.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "document_id": {
+                    "type": "string",
+                    "description": "The document ID, a globally unique identifier (GUID) for the particular revision of a labeling document.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "document_id": [
+                    "id"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "id",
+            "FDA",
+            "DrugNameRetrieval"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_inactive_ingredient",
+        "description": "Retrieve the drug name based on the inactive ingredient information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "inactive_ingredient": {
+                    "type": "string",
+                    "description": "The name of the inactive ingredient.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "inactive_ingredient": [
+                    "inactive_ingredient"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "InactiveIngredient",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_indication",
+        "description": "Retrieve a list of drug names based on a specific indication or usage.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "IndicationsAndUsage",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_information_for_owners_or_caregivers",
+        "description": "Retrieve drug names based on information for owners or caregivers.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "field_info": {
+                    "type": "string",
+                    "description": "The specific information related to owners or caregivers to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "field_info": [
+                    "information_for_owners_or_caregivers"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "InformationForPatients",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_instructions_for_use",
+        "description": "Retrieve drug names based on specific instructions for use.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "instructions_for_use": {
+                    "type": "string",
+                    "description": "Information about safe handling and use of the drug product.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "instructions_for_use": [
+                    "instructions_for_use"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "InstructionsForUse",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_child_safety_info",
+        "description": "Retrieve drug names based on whether the product should be kept out of the reach of children and instructions about what to do in the case of accidental contact or ingestion.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "child_safety_info": {
+                    "type": "string",
+                    "description": "Information pertaining to whether the product should be kept out of the reach of children.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "child_safety_info": [
+                    "keep_out_of_reach_of_children"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "keep_out_of_reach_of_children",
+            "FDA",
+            "SafetyInformation",
+            "InstructionsForUse"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_labor_and_delivery_info",
+        "description": "Retrieve the drug name based on information about the drug\u2019s use during labor or delivery.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "labor_and_delivery_info": {
+                    "type": "string",
+                    "description": "Information about the drug\u2019s use during labor or delivery.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "labor_and_delivery_info": [
+                    "labor_and_delivery"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "labor_and_delivery",
+            "FDA",
+            "LaborAndDelivery"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_lab_tests",
+        "description": "Retrieve drug names based on laboratory tests information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "lab_test_info": {
+                    "type": "string",
+                    "description": "Information related to laboratory tests.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "lab_test_info": [
+                    "laboratory_tests"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "LaboratoryTests",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_mechanism_of_action",
+        "description": "Retrieve drug names based on the specified mechanism of action information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "mechanism_info": {
+                    "type": "string",
+                    "description": "Information related to the desired mechanism of action.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "mechanism_info": [
+                    "mechanism_of_action"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "mechanism_of_action",
+            "FDA",
+            "MechanismOfAction"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_microbiology",
+        "description": "Retrieve the drug name based on microbiology field information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "microbiology_info": {
+                    "type": "string",
+                    "description": "Information related to the microbiology field.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "microbiology_info": [
+                    "microbiology"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "microbiology",
+            "FDA",
+            "Microbiology"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_nonclinical_toxicology_info",
+        "description": "Retrieve drug names based on nonclinical toxicology information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "toxicology_info": {
+                    "type": "string",
+                    "description": "Information about toxicology in non-human subjects.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "toxicology_info": [
+                    "nonclinical_toxicology"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "NonclinicalToxicology",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_nonteratogenic_effects",
+        "description": "Retrieve drug names based on the presence of nonteratogenic effects information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "nonteratogenic_effects": {
+                    "type": "string",
+                    "description": "Information about the drug\u2019s nonteratogenic effects.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "nonteratogenic_effects": [
+                    "nonteratogenic_effects"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "NonteratogenicEffects",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_info_for_nursing_mothers",
+        "description": "Retrieve drug names based on information related to nursing mothers.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "nursing_mothers_info": {
+                    "type": "string",
+                    "description": "Information about excretion of the drug in human milk and effects on the nursing infant.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "nursing_mothers_info": [
+                    "nursing_mothers"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "NursingMothers",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_other_safety_info",
+        "description": "Retrieve the drug name based on the provided safety information. This tool looks through safety information that may not be specified in other fields.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "safety_info": {
+                    "type": "string",
+                    "description": "Information about safe use and handling of the product.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "safety_info": [
+                    "other_safety_information"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "other_safety_information",
+            "FDA",
+            "SafeHandlingWarning"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_overdosage_info",
+        "description": "Retrieve drug names based on information about signs, symptoms, and laboratory findings of acute overdosage.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "overdosage_info": {
+                    "type": "string",
+                    "description": "Information about signs, symptoms, and laboratory findings of acute overdosage.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "overdosage_info": [
+                    "overdosage"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "Overdosage",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_principal_display_panel",
+        "description": "Retrieve the drug name based on the content of the principal display panel of the product package.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "display_panel_content": {
+                    "type": "string",
+                    "description": "The content of the principal display panel of the product package.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "display_panel_content": [
+                    "package_label_principal_display_panel"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "package_label_principal_display_panel",
+            "FDA",
+            "HowSupplied"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_pediatric_use",
+        "description": "Retrieve drug names based on pediatric use information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pediatric_use_info": {
+                    "type": "string",
+                    "description": "Information related to the safe and effective pediatric use of the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pediatric_use_info": [
+                    "pediatric_use"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "PediatricUse",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_pharmacodynamics",
+        "description": "Retrieve the drug name based on pharmacodynamics information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pharmacodynamics": {
+                    "type": "string",
+                    "description": "Information about the biochemical or physiologic pharmacologic effects of the drug.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pharmacodynamics": [
+                    "pharmacodynamics"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "Pharmacodynamics",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_pharmacogenomics",
+        "description": "Retrieve the drug name based on pharmacogenomics field information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pharmacogenomics": {
+                    "type": "string",
+                    "description": "Pharmacogenomics information to search for.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pharmacogenomics": [
+                    "pharmacogenomics"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "pharmacogenomics",
+            "FDA",
+            "Pharmacogenomics"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_pharmacokinetics",
+        "description": "Retrieve drug names based on specific pharmacokinetics information, such as absorption, distribution, elimination, metabolism, drug interactions, and specific patient populations.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pharmacokinetics_info": {
+                    "type": "string",
+                    "description": "Information about the clinically significant pharmacokinetics of a drug or active metabolites.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pharmacokinetics_info": [
+                    "pharmacokinetics"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "pharmacokinetics",
+            "FDA",
+            "Pharmacokinetics"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_precautions",
+        "description": "Retrieve the drug name based on the precautions field information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "precautions": {
+                    "type": "string",
+                    "description": "Information about any special care to be exercised for safe and effective use of the drug.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "precautions": [
+                    "precautions"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "precautions",
+            "FDA",
+            "GeneralPrecautions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_pregnancy_effects_info",
+        "description": "Retrieve drug names based on information about effects the drug may have on pregnant women or on a fetus.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pregnancy_info": {
+                    "type": "string",
+                    "description": "Information about the effects on pregnancy to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pregnancy_info": [
+                    "pregnancy"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "pregnancy",
+            "FDA",
+            "UseInSpecificPopulations"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_pregnancy_or_breastfeeding_info",
+        "description": "Retrieve the drug names based on pregnancy or breastfeeding information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "pregnancy_info": {
+                    "type": "string",
+                    "description": "Information related to pregnancy or breastfeeding.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "pregnancy_info": [
+                    "pregnancy_or_breast_feeding"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "IndicationsAndUsage",
+            "Pregnancy",
+            "NursingMothers",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_reference",
+        "description": "Retrieve the drug name based on the reference information provided in the drug labeling.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "The reference information to search for in the drug labeling.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "reference": [
+                    "references"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "references",
+            "FDA",
+            "DrugNameRetrieval"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_residue_warning",
+        "description": "Retrieve drug names based on the presence of residue warnings.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "residue_warning": {
+                    "type": "string",
+                    "description": "The residue warning information to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "residue_warning": [
+                    "residue_warning"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "ResidueWarning",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_risk",
+        "description": "Retrieve drug names based on specific risk information, especially regarding pregnancy or breastfeeding.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "risk_info": {
+                    "type": "string",
+                    "description": "Specific risk information to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "risk_info": [
+                    "risks"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "risks",
+            "FDA",
+            "DrugInteractions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_route",
+        "description": "Retrieve the drug names based on the route of administration.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "route": {
+                    "type": "string",
+                    "description": "The route of administration of the drug.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "route": [
+                    "route",
+                    "openfda.route"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "route",
+            "FDA",
+            "DrugNames"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_safe_handling_warning",
+        "description": "Retrieve drug names that have specific safe handling warnings.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "safe_handling_warning": {
+                    "type": "string",
+                    "description": "The specific safe handling warning to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "safe_handling_warning": [
+                    "safe_handling_warning"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "SafeHandlingWarning",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_set_id",
+        "description": "Retrieve the drug name based on the Set ID of the labeling.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "set_id": {
+                    "type": "string",
+                    "description": "The Set ID, a globally unique identifier for the labeling.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "set_id": [
+                    "set_id"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "get_drug_name_by_set_id",
+            "DrugNameRetrieval",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_spl_indexing_data_elements",
+        "description": "Retrieve drug names based on Structured Product Labeling (SPL) indexing data elements.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "spl_indexing_data_elements": {
+                    "type": "string",
+                    "description": "The SPL indexing data elements to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "spl_indexing_data_elements": [
+                    "spl_indexing_data_elements"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "SplIndexing",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_medication_guide",
+        "description": "Retrieve drug names based on the presence of specific information in the medication guide.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "medguide_info": {
+                    "type": "string",
+                    "description": "Information contained in the medication guide.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "medguide_info": [
+                    "spl_medguide"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "splMedguide",
+            "FDA",
+            "MedicationGuide",
+            "DrugInformation"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_from_patient_package_insert",
+        "description": "Retrieve the drug name based on the information provided in the patient package insert.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "patient_package_insert": {
+                    "type": "string",
+                    "description": "Information necessary for patients to use the drug safely and effectively.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "patient_package_insert": [
+                    "spl_patient_package_insert"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "spl_patient_package_insert",
+            "FDA",
+            "Description",
+            "PatientMedicationInformation",
+            "HowSupplied"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_ingredient",
+        "description": "Retrieve drug names based on a specific ingredient present in the drug product.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "ingredient_name": {
+                    "type": "string",
+                    "description": "The name of the ingredient to search for in drug products.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "ingredient_name": [
+                    "spl_product_data_elements"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "InactiveIngredient",
+            "ActiveIngredient",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_stop_use_info",
+        "description": "Retrieve the drug name based on the stop use information provided.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "stop_use_info": {
+                    "type": "string",
+                    "description": "Information about when use of the drug product should be discontinued immediately and a doctor consulted.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "stop_use_info": [
+                    "stop_use"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "stop_use",
+            "FDA",
+            "DiscontinuationGuidelines"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_storage_and_handling_info",
+        "description": "Retrieve the drug name based on storage and handling information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "storage_info": {
+                    "type": "string",
+                    "description": "Information about the storage and handling of the drug product.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "storage_info": [
+                    "storage_and_handling"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "storage_and_handling",
+            "FDA",
+            "StorageAndHandling"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_safety_summary",
+        "description": "Retrieve drug names based on the summary of safety and effectiveness information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "summary_text": {
+                    "type": "string",
+                    "description": "Text to search within the summary of safety and effectiveness field.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "summary_text": [
+                    "summary_of_safety_and_effectiveness"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "SummaryOfSafety",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_teratogenic_effects",
+        "description": "Retrieve drug names based on specific teratogenic effects categories.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "teratogenic_effects": {
+                    "type": "string",
+                    "description": "The teratogenic effects category to search for (e.g., Pregnancy category A, B, C, D, or X).",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "teratogenic_effects": [
+                    "teratogenic_effects"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "TeratogenicEffects",
+            "FDA"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_population_use",
+        "description": "Retrieve drug names based on their use in specific populations, such as pregnant women, nursing mothers, pediatric patients, and geriatric patients.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "population_use": {
+                    "type": "string",
+                    "description": "The specific population use to search for (e.g., pregnant women, nursing mothers).",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "population_use": [
+                    "use_in_specific_populations"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "use_in_specific_populations",
+            "FDA",
+            "PediatricUse",
+            "NursingMothers",
+            "GeriatricUse"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_user_safety_warning",
+        "description": "Retrieve drug names that have specific user safety warnings.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "safety_warning": {
+                    "type": "string",
+                    "description": "The specific safety warning to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "safety_warning": [
+                    "user_safety_warnings"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "user_safety_warnings",
+            "FDA",
+            "UserSafetyWarnings"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_name_by_warnings",
+        "description": "Retrieve the drug names based on specific warning information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "warning_text": {
+                    "type": "string",
+                    "description": "The warning text to search for in the drug labeling.",
+                    "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "warning_text": [
+                    "warnings"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "warnings",
+            "FDA",
+            "DrugInteractions",
+            "Warnings",
+            "WarningsAndCautions"
+        ]
+    },
+    {
+        "name": "FDA_get_drug_names_by_warnings_and_cautions",
+        "description": "Retrieve drug names based on specific warnings and cautions information.",
+        "parameter": {
+            "type": "object",
+            "properties": {
+                "warnings_and_cautions_info": {
+                    "type": "string",
+                    "description": "The warnings and cautions text to search for.",
+                    "required": true
+                },
+                "indication": {
+                    "type": "string",
+                    "description": "The indication or usage of the drug.",
+                    "required": false
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "The number of records to return.",
+                    "required": false
+                },
+                "skip": {
+                    "type": "integer",
+                    "description": "The number of records to skip.",
+                    "required": false
+                }
+            }
+        },
+        "fields": {
+            "search_fields": {
+                "warnings_and_cautions_info": [
+                    "warnings_and_cautions"
+                ],
+                "indication": [
+                    "indications_and_usage"
+                ]
+            },
+            "return_fields": [
+                "openfda.brand_name",
+                "openfda.generic_name"
+            ]
+        },
+        "type": "FDADrugLabel",
+        "label": [
+            "FDADrugLabel",
+            "warnings_and_cautions",
+            "FDA",
+            "WarningsAndCautions"
+        ]
+    }
+]

@@ -15,7 +15,7 @@ from langchain_core.messages import (AIMessage, BaseMessage, HumanMessage, Syste
 
 # --- 从 graph.py 模块导入代理构建函数和配置 ---
 # from graph import build_graph, RAG_MODEL_NAME
-from txagent_reflection_v1 import build_graph, RAG_MODEL_NAME
+from txagent_reflection_v2 import build_graph, RAG_MODEL_NAME
 
 
 async def log_request_body(request: Request):
@@ -169,15 +169,18 @@ async def invoke_agent(agent_request: AgentRequest, http_request: Request):
     # 4. 准备图的输入
     inputs = {"messages": input_messages}
     
-    # 5. 调用图并获取最终状态
+    # 5. 异步调用图并获取最终状态
     try:
-        final_state = graph.invoke(inputs,{"recursion_limit": 50})
+        # ================================================================= #
+        # === 核心修改：使用 await 和 ainvoke 来进行非阻塞的异步调用 === #
+        # ================================================================= #
+        final_state = await graph.ainvoke(inputs, {"recursion_limit": 80})
         
         # 6. 提取最终答案和完整的消息历史
         final_messages_lc = final_state.get("messages", [])
         if not final_messages_lc or not isinstance(final_messages_lc[-1], AIMessage):
              raise HTTPException(status_code=500, detail="代理未能生成最终答案。")
-             
+            
         final_answer = final_messages_lc[-1].content
         complete_messages_api = convert_langchain_messages_to_api(final_messages_lc)
         
@@ -212,7 +215,15 @@ def health_check():
 # --- 3. 主程序执行块 ---
 # ==============================================================================
 if __name__ == "__main__":
-    # 运行此服务器:
+    # 运行此服务器的推荐方式:
     # 1. 确保你有一个 .env 文件，其中包含 GOOGLE_API_KEY 或 OPENAI_API_KEY。
-    # 2. 在终端中运行: uvicorn api_server:app --host 0.0.0.0 --port 8000 --reload
-    uvicorn.run(app, host="127.0.0.1", port=8128)
+    # 2. 在终端中运行以下命令以启动支持多进程的服务器:
+    #    uvicorn api_server:app --host 0.0.0.0 --port 8128 --workers 4
+    #
+    #    - '--workers 4' 会启动4个进程来处理请求，实现真正的并行。
+    #    - 可以根据你的CPU核心数调整 worker 数量。
+    
+    # 以下代码用于本地快速调试，但它是单进程的。
+    print("正在以单进程开发模式启动服务器。")
+    print("为了获得最佳性能和并发能力，请使用 'uvicorn api_server:app --workers 4' 命令启动。")
+    uvicorn.run("api_server:app", host="127.0.0.1", port=8128, reload=True)
